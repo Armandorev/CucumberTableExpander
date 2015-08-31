@@ -24,7 +24,7 @@ public class CucumberTableExpander {
 			}
 			else
 			{
-				this.result.append("\nScenario: ").append(scenarios[i].trim());
+				this.result.append("\nScenario: ").append(scenarios[i].trim()).append("\n");
 			}
 	    }
 	    
