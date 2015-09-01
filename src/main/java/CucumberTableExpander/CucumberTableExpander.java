@@ -35,7 +35,6 @@ public class CucumberTableExpander {
 			}
 	    }
 	    
-	    //TODO : replace this with actual string concatenation of Scenarios
 	    // scenarios outlines n-times with table values.
 	    this.feature = this.result.toString();
 	    

@@ -11,7 +11,6 @@ public class CucumberTableHeaderElement {
 	public String getHeaderName() {
 		return headerName;
 	}
-
 	
 	public String getHeaderNameWithSymbols() {
 		return "<"+headerName+">";

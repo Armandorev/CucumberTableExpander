@@ -29,7 +29,6 @@ public class CucumberTableOutline {
 	public void addOutlineLines(String[] outlineLineEntries) {
 		
 		//Read the Outline Definition and find one variable name on each line.
-		//TODO Manage more than one variable per line.
 		for (int j = 0; j < outlineLineEntries.length; j++) {
 			String outlineLineValue = outlineLineEntries[j].toString();
 			this.outlineOutputWork.append(outlineLineValue).append("\n");

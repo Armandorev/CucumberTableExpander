@@ -18,8 +18,8 @@ public class CucumberTableExpanderUseSample {
 		ArrayList<String> cucumberTableExpandedAsList = new CucumberTableExpander(file).getFeatureExpandedAsList();
 		
 		//Display the original file and the processed one.
-	    System.out.println("original------------------------> : \n"+ file);
-	    System.out.println("expanded------------------------> : \n"+ cucumberTableExpanded);
+	    System.out.println("original:------------------------>  \n"+ file);
+	    System.out.println("expanded:------------------------>  \n"+ cucumberTableExpanded);
 
 	    System.out.println("expanded-as-list-----------------> : \n");
 	    for (int j = 0; j < cucumberTableExpandedAsList.size(); j++) {
