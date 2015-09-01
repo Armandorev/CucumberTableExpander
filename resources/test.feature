@@ -25,10 +25,13 @@ Scenario Outline: Create New Simple Test Table different order
   When I enter username as <username>
   And I enter password as <password>
   And I enter title as <title>
+  #CommentTest 1
   And I press submit
   Then I am logged
 
 Examples:
+#CommentTest 2
 | username | title | password
+#CommentTest 3
 | Rob      | title1 | password1
 | Bob      | title2 | password2

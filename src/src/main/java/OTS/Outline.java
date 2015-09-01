@@ -1,6 +1,8 @@
 package src.main.java.OTS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class Outline {
 
@@ -95,8 +97,18 @@ public class Outline {
 		this.addOutlineLines(parts[0].trim().split("\n"));//OTS
 		
 		//Separate each line on the table
-		String[] scenarioOnTable = parts[1].trim().split("\n");//OTS
-		this.addScenarioValues(scenarioOnTable);
+		ArrayList<String> scenarioontableList = new ArrayList<String>(Arrays.asList(parts[1].trim().split("\n")));//OTS
+		for (Iterator<String> iteration = scenarioontableList.listIterator(); iteration.hasNext(); ) {
+		    String elementToCheck = iteration.next();
+		    if (elementToCheck.startsWith("#")) {
+		    	iteration.remove();
+		    }
+		}
+		String[] arrayOfScenario = new String[scenarioontableList.size()];
+		for (int i = 0; i < scenarioontableList.size(); i++) {
+			arrayOfScenario[i] = scenarioontableList.get(i);	
+		}
+		this.addScenarioValues(arrayOfScenario);
 		
 	}
 
