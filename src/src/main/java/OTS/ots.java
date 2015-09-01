@@ -7,11 +7,15 @@ import java.nio.file.Paths;
 public class ots {
 	
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+		// Class for testing Cucumber Table Expander
 
+		//Read the feature data from a file
 		String file = readFile("resources/test.feature");
-	    String cucumberTableExpanded = new CucumberTableExpander(file).getFeatureExpanded();
+	    //Call the cucumber table expander passing the file readed as string and return the 
+		//	cucumber feature expanded
+		String cucumberTableExpanded = new CucumberTableExpander(file).getFeatureExpanded();
 
+		//Display the original file and the processed one.
 	    System.out.println("original------------------------> : \n"+ file);
 	    System.out.println("expanded------------------------> : \n"+ cucumberTableExpanded);
 	}

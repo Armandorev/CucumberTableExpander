@@ -25,9 +25,12 @@ public class Outline {
 
 	public void addOutlineLines(String[] outlineLineEntries) {
 		
+		//Read the Outline Definition and find one variable name on each line.
+		//TODO Manage more than one variable per line.
 		for (int j = 0; j < outlineLineEntries.length; j++) {
 			String outlineLineValue = outlineLineEntries[j].toString();
 			this.outlineOutputWork.append(outlineLineValue).append("\n");
+			//Find the variable on the line.
 			if (outlineLineValue.contains("<"))
 			{
 				String variableName = outlineLineValue.substring(outlineLineValue.indexOf("<") + 1);
@@ -65,7 +68,6 @@ public class Outline {
 			if (!scenarioOnTable[j].isEmpty())
 			{
 				indexOfHeader = 0;
-				int numOfHeaders = headers.size();
 				String ScenarioGenerated = outlineOutputWork.toString();
 				//Divide Each Value for variable
 				String[] variableValue = scenarioOnTable[j].trim().split("\\|");//OTS
