@@ -6,7 +6,6 @@ Scenario Outline: Create Simple Test
   And I press submit
   Then I am logged
 
-
 Examples:
 
 | username | password | title |
@@ -28,7 +27,6 @@ Scenario Outline: Create New Simple Test Table different order
   And I enter title as <title>
   And I press submit
   Then I am logged
-
 
 Examples:
 

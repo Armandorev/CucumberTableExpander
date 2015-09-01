@@ -1,0 +1,184 @@
+= Cucumber Table Expander
+Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
+
+A class to transform Cucumber feature with tables in extended cucumber escenarios.
+
+The Cucumber Table Expander consists on four classes:
+
+`CucumberTableExpander.java::Converters::AsciiDocConverter`::
+  Class that can be instantiated receiving a feature as string and returns the result.
+`HeaderElement.java::Generators::AsciiDocPreprocessor`::
+  Promotes select AsciiDoc attributes to Jekyll front matter (e.g., title, author, page-layout)
+`Outline.java::Filters.asciidocify`::
+  Object to work with Outline Scenarios. REceives the table and definitions and do the real processing.
+`ots.java::Filters.asciidocify`::
+  Demo class to be run. Read an included test.feature file and display the result.
+
+== Transformed Result
+
+The Cucumber Table Expander can produce two different results. Once it receives the input , the two available methos can be called.
+
+[source,java]
+----
+//Read the feature data from a file
+String file = readFile("resources/test.feature");
+//Call the cucumber table expander passing the file readed as string and return the
+//	cucumber feature expanded
+//Result as a single String
+String cucumberTableExpanded = new CucumberTableExpander(file).getFeatureExpanded();
+//Result as a ArrayList of Strings
+ArrayList<String> cucumberTableExpandedAsList = new CucumberTableExpander(file).getFeatureExpandedAsList();
+
+----
+
+== Sample (Included in test.feature)
+
+To add a page composed in AsciiDoc, simply add an AsciiDoc file to the root of the project with an AsciiDoc file extension.
+
+This is a sample cucumber file to be processed.
+
+[source,cucumber]
+----
+Scenario Outline: Create Simple Test
+  Given I open the application
+  When I enter username as <username>
+  And I enter password as <password>
+  And I enter title as <title>
+  And I press submit
+  Then I am logged
+
+Examples:
+
+| username | password | title |
+| Rob      | xyz1      | title1 |
+| Bob      | xyz1      | title2 | invalid value
+| Ben      | xyz2      | title3 |
+
+Scenario: Test without table
+  Given I open the application again
+  When I enter username as Tiger
+  And I enter password as Shot
+  Then I enter title as Mr
+  And press submit
+
+Scenario Outline: Create New Simple Test Table different order
+  Given I open the application
+  When I enter username as <username>
+  And I enter password as <password>
+  And I enter title as <title>
+  And I press submit
+  Then I am logged
+
+Examples:
+
+| username | title | password
+| Rob      | title1 | password1
+| Bob      | title2 | password2
+----
+....
+
+=== Sample extracted with ots.java as a single string
+
+[source,cucumber]
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Rob
+  And I enter password as xyz1
+  And I enter title as title1
+  And I press submit
+  Then I am logged
+
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Bob
+  And I enter password as xyz1
+  And I enter title as title2
+  And I press submit
+  Then I am logged
+
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Ben
+  And I enter password as xyz2
+  And I enter title as title3
+  And I press submit
+  Then I am logged
+
+Scenario: : Test without table
+  Given I open the application again
+  When I enter username as Tiger
+  And I enter password as Shot
+  Then I enter title as Mr
+  And press submit
+
+Scenario: Create New Simple Test Table different order
+  Given I open the application
+  When I enter username as Rob
+  And I enter password as password1
+  And I enter title as title1
+  And I press submit
+  Then I am logged
+
+Scenario: Create New Simple Test Table different order
+  Given I open the application
+  When I enter username as Bob
+  And I enter password as password2
+  And I enter title as title2
+  And I press submit
+  Then I am logged
+
+=== Sample extracted with ots.java as a ArrayList of Strings(Included heading array index row)
+
+[source,cucumber]
+Scenario List element(0)
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Rob
+  And I enter password as xyz1
+  And I enter title as title1
+  And I press submit
+  Then I am logged
+
+Scenario List element(1)
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Bob
+  And I enter password as xyz1
+  And I enter title as title2
+  And I press submit
+  Then I am logged
+
+Scenario List element(2)
+Scenario: Create Simple Test
+  Given I open the application
+  When I enter username as Ben
+  And I enter password as xyz2
+  And I enter title as title3
+  And I press submit
+  Then I am logged
+
+Scenario List element(3)
+Scenario: : Test without table
+  Given I open the application again
+  When I enter username as Tiger
+  And I enter password as Shot
+  Then I enter title as Mr
+  And press submit
+
+Scenario List element(4)
+Scenario: Create New Simple Test Table different order
+  Given I open the application
+  When I enter username as Rob
+  And I enter password as password1
+  And I enter title as title1
+  And I press submit
+  Then I am logged
+
+Scenario List element(5)
+Scenario: Create New Simple Test Table different order
+  Given I open the application
+  When I enter username as Bob
+  And I enter password as password2
+  And I enter title as title2
+  And I press submit
+  Then I am logged
