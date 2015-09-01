@@ -29,7 +29,6 @@ Scenario Outline: Create New Simple Test Table different order
   Then I am logged
 
 Examples:
-
 | username | title | password
 | Rob      | title1 | password1
 | Bob      | title2 | password2

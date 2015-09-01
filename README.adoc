@@ -5,13 +5,13 @@ A class to transform Cucumber feature with tables in extended cucumber escenario
 
 The Cucumber Table Expander consists on four classes:
 
-`CucumberTableExpander.java::Converters::AsciiDocConverter`::
+`CucumberTableExpander.java`
   Class that can be instantiated receiving a feature as string and returns the result.
-`HeaderElement.java::Generators::AsciiDocPreprocessor`::
+`HeaderElement.java`
   Promotes select AsciiDoc attributes to Jekyll front matter (e.g., title, author, page-layout)
-`Outline.java::Filters.asciidocify`::
+`Outline.java`
   Object to work with Outline Scenarios. REceives the table and definitions and do the real processing.
-`ots.java::Filters.asciidocify`::
+`ots.java`
   Demo class to be run. Read an included test.feature file and display the result.
 
 == Transformed Result
@@ -77,8 +77,9 @@ Examples:
 ----
 ....
 
-=== Sample extracted with ots.java as a single string
+== Sample extracted with ots.java as a single string
 
+----
 [source,cucumber]
 Scenario: Create Simple Test
   Given I open the application
@@ -126,9 +127,12 @@ Scenario: Create New Simple Test Table different order
   And I enter title as title2
   And I press submit
   Then I am logged
+----
+....
 
-=== Sample extracted with ots.java as a ArrayList of Strings(Included heading array index row)
+==== Sample extracted with ots.java as a ArrayList of Strings(Included heading array index row)
 
+----
 [source,cucumber]
 Scenario List element(0)
 Scenario: Create Simple Test
@@ -182,3 +186,5 @@ Scenario: Create New Simple Test Table different order
   And I enter title as title2
   And I press submit
   Then I am logged
+----
+....
