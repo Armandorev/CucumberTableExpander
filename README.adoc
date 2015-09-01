@@ -66,12 +66,14 @@ Scenario Outline: Create New Simple Test Table different order
   When I enter username as <username>
   And I enter password as <password>
   And I enter title as <title>
+  #CommentTest 1
   And I press submit
   Then I am logged
 
 Examples:
-
+#CommentTest 2
 | username | title | password
+#CommentTest 3
 | Rob      | title1 | password1
 | Bob      | title2 | password2
 ----
@@ -116,6 +118,7 @@ Scenario: Create New Simple Test Table different order
   When I enter username as Rob
   And I enter password as password1
   And I enter title as title1
+  #CommentTest 1
   And I press submit
   Then I am logged
 
@@ -124,6 +127,7 @@ Scenario: Create New Simple Test Table different order
   When I enter username as Bob
   And I enter password as password2
   And I enter title as title2
+  #CommentTest 1
   And I press submit
   Then I am logged
 ----
@@ -173,6 +177,7 @@ Scenario: Create New Simple Test Table different order
   When I enter username as Rob
   And I enter password as password1
   And I enter title as title1
+  #CommentTest 1
   And I press submit
   Then I am logged
 
@@ -182,6 +187,7 @@ Scenario: Create New Simple Test Table different order
   When I enter username as Bob
   And I enter password as password2
   And I enter title as title2
+  #CommentTest 1
   And I press submit
   Then I am logged
 ----
