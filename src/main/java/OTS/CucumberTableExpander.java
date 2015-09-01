@@ -1,4 +1,4 @@
-package src.main.java.OTS;
+package main.java.OTS;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class CucumberTableExpander {
 				//Separate Scenario definitions from table with containing values
 				String[] parts = scenarios[i].trim().split("Examples:|Scenarios:");//OTS
 				//Instantiate outline class to work with definition and list of values
-				Outline outline = new Outline(parts);
+				CucumberTableOutline outline = new CucumberTableOutline(parts);
 				this.result.append(outline.getOutlineOutput());
 				this.listOutput.addAll(outline.getSeveralScenariosResult());
 				

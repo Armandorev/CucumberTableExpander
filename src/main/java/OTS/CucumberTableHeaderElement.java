@@ -1,11 +1,11 @@
-package src.main.java.OTS;
+package main.java.OTS;
 
-public class HeaderElement {
+public class CucumberTableHeaderElement {
 	private String headerName;
 	private int headerPosition;
 	private int headerPositionOnTable;
 
-	public HeaderElement() {
+	public CucumberTableHeaderElement() {
 	}
 	
 	public String getHeaderName() {

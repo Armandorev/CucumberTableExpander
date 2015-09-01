@@ -1,17 +1,17 @@
-package src.main.java.OTS;
+package main.java.OTS;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class ots {
+public class CucumberTableExpanderUseSample {
 	
 	public static void main(String[] args) throws IOException {
 		// Class for testing Cucumber Table Expander
 
 		//Read the feature data from a file
-		String file = readFile("resources/test.feature");
+		String file = readFile("src/main/resources/test.feature");
 	    //Call the cucumber table expander passing the file readed as string and return the 
 		//	cucumber feature expanded
 		String cucumberTableExpanded = new CucumberTableExpander(file).getFeatureExpanded();

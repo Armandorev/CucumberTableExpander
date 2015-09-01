@@ -11,7 +11,7 @@ The Cucumber Table Expander consists on four classes:
   Promotes select AsciiDoc attributes to Jekyll front matter (e.g., title, author, page-layout)
 `Outline.java`
   Object to work with Outline Scenarios. REceives the table and definitions and do the real processing.
-`ots.java`
+`CucumberTableExpanderUseSample.java`
   Demo class to be run. Read an included test.feature file and display the result.
 
 == Transformed Result

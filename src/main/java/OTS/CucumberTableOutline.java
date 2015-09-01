@@ -1,19 +1,19 @@
-package src.main.java.OTS;
+package main.java.OTS;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class Outline {
+public class CucumberTableOutline {
 
 	private ArrayList<String> outlineLine  = new ArrayList<String>();
-	private ArrayList<HeaderElement> headers   = new ArrayList<HeaderElement>();
+	private ArrayList<CucumberTableHeaderElement> headers   = new ArrayList<CucumberTableHeaderElement>();
 	private ArrayList<String> headersNames   = new ArrayList<String>();
 	private StringBuilder outlineOutputWork = new StringBuilder();
 	private StringBuilder outlineOutput = new StringBuilder();
 	private ArrayList<String> severalScenariosResult   = new ArrayList<String>();
 
-	public Outline(String[] parts) {
+	public CucumberTableOutline(String[] parts) {
 		addFeatureContent(parts);
 	}
 
@@ -57,7 +57,7 @@ public class Outline {
 			{
 				//Include Header element to the Scenario
 				int position = this.headersNames.indexOf(variableNamesOnValues[i].trim());
-				HeaderElement headerElement = new HeaderElement();
+				CucumberTableHeaderElement headerElement = new CucumberTableHeaderElement();
 				headerElement.setHeaderPosition(position);
 				headerElement.setHeaderName(variableNamesOnValues[i].trim());
 				headerElement.setHeaderPositionOnTable(i);
