@@ -1,4 +1,4 @@
-package main.java.OTS;
+package main.java.CucumberTableExpander;
 
 import java.io.IOException;
 import java.nio.file.Files;

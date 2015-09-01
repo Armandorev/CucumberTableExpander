@@ -1,4 +1,4 @@
-package main.java.OTS;
+package main.java.CucumberTableExpander;
 
 public class CucumberTableHeaderElement {
 	private String headerName;
