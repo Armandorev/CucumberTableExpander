@@ -75,12 +75,11 @@ Examples:
 | Rob      | title1 | password1
 | Bob      | title2 | password2
 ----
-....
 
-== Sample extracted with ots.java as a single string
+Sample extracted with ots.java as a single string
 
-----
 [source,cucumber]
+----
 Scenario: Create Simple Test
   Given I open the application
   When I enter username as Rob
@@ -128,12 +127,11 @@ Scenario: Create New Simple Test Table different order
   And I press submit
   Then I am logged
 ----
-....
 
-==== Sample extracted with ots.java as a ArrayList of Strings(Included heading array index row)
+Sample extracted with ots.java as a ArrayList of Strings(Included heading array index row)
 
-----
 [source,cucumber]
+----
 Scenario List element(0)
 Scenario: Create Simple Test
   Given I open the application
@@ -187,4 +185,3 @@ Scenario: Create New Simple Test Table different order
   And I press submit
   Then I am logged
 ----
-....
