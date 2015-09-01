@@ -3,6 +3,7 @@ package src.main.java.OTS;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ots {
 	
@@ -14,10 +15,17 @@ public class ots {
 	    //Call the cucumber table expander passing the file readed as string and return the 
 		//	cucumber feature expanded
 		String cucumberTableExpanded = new CucumberTableExpander(file).getFeatureExpanded();
-
+		ArrayList<String> cucumberTableExpandedAsList = new CucumberTableExpander(file).getFeatureExpandedAsList();
+		
 		//Display the original file and the processed one.
 	    System.out.println("original------------------------> : \n"+ file);
 	    System.out.println("expanded------------------------> : \n"+ cucumberTableExpanded);
+
+	    System.out.println("expanded-as-list-----------------> : \n");
+	    for (int j = 0; j < cucumberTableExpandedAsList.size(); j++) {
+			String outlineLineValue = cucumberTableExpandedAsList.get(j).toString();
+			System.out.println("Scenario List element("+j+")"+outlineLineValue);
+		}
 	}
 
 	static String readFile(String path) 

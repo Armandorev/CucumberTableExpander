@@ -9,7 +9,8 @@ public class Outline {
 	private ArrayList<String> headersNames   = new ArrayList<String>();
 	private StringBuilder outlineOutputWork = new StringBuilder();
 	private StringBuilder outlineOutput = new StringBuilder();
-	
+	private ArrayList<String> severalScenariosResult   = new ArrayList<String>();
+
 	public Outline(String[] parts) {
 		addFeatureContent(parts);
 	}
@@ -82,7 +83,8 @@ public class Outline {
 					}
 				}
 				this.outlineOutput.append("\n").append("Scenario: ").append(ScenarioGenerated);
-				//NEW ROW WITH DATA on ScenarioGenerated 
+				//NEW ROW WITH DATA on ScenarioGenerated
+				this.severalScenariosResult.add("\nScenario: "+ScenarioGenerated);
 			}
 		}
 		
@@ -102,6 +104,9 @@ public class Outline {
 		return outlineOutput.toString();
 	}
 
+	public ArrayList<String> getSeveralScenariosResult() {
+		return severalScenariosResult;
+	}
 	
 	
 }

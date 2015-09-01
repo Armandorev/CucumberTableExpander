@@ -1,9 +1,12 @@
 package src.main.java.OTS;
 
+import java.util.ArrayList;
+
 public class CucumberTableExpander {
 	
 	private String feature;
 	private StringBuilder result = new StringBuilder();
+	private ArrayList<String> listOutput = new ArrayList<String>();
 	
 	public CucumberTableExpander(String featureFile){
 		String[]scenarios = featureFile.split("Scenario"); 
@@ -20,11 +23,15 @@ public class CucumberTableExpander {
 				//Instantiate outline class to work with definition and list of values
 				Outline outline = new Outline(parts);
 				this.result.append(outline.getOutlineOutput());
+				this.listOutput.addAll(outline.getSeveralScenariosResult());
 				
 			}
 			else
 			{
-				this.result.append("\nScenario: ").append(scenarios[i].trim()).append("\n");
+				StringBuilder noFeatureScenario = new StringBuilder();
+				noFeatureScenario.append("\nScenario: ").append(scenarios[i].trim()).append("\n");
+				this.result.append(noFeatureScenario);
+				this.listOutput.add(noFeatureScenario.toString());
 			}
 	    }
 	    
@@ -40,6 +47,15 @@ public class CucumberTableExpander {
 		}
 		else{
 			return this.feature;
+		}
+	}
+
+	public ArrayList<String> getFeatureExpandedAsList(){
+		if (this.listOutput.isEmpty()){
+			return null;
+		}
+		else{
+			return this.listOutput;
 		}
 	}
 	
