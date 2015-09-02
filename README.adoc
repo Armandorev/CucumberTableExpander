@@ -33,8 +33,6 @@ ArrayList<String> cucumberTableExpandedAsList = new CucumberTableExpander(file).
 
 == Sample (Included in test.feature)
 
-To add a page composed in AsciiDoc, simply add an AsciiDoc file to the root of the project with an AsciiDoc file extension.
-
 This is a sample cucumber file to be processed.
 
 [source,cucumber]
