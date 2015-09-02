@@ -6,6 +6,14 @@ import java.util.Iterator;
 
 public class CucumberTableExpander {
 
+// Delimiters for different Scenarios on the Cucumber Feature File
+private static final String SCENARIO_DELIMITERS = "Scenario";
+//Delimiters for specific Scenarios with tables
+private static final String SCENARIO_OUTLINE_DELIMITER = "Outline";
+//Delimiters for separate table value lines from definition
+private static final String SCENARIO_TABLE_SEPARATOR = "Examples:|Scenarios:";
+
+
 // **************************************************************
 // * Cucumber Table Expander. (Armando Sanchez Medina) 			*
 // *  - Input : String containing Cucumber Feature File 		*
@@ -23,27 +31,25 @@ public class CucumberTableExpander {
 	private ArrayList<String> listOutput = new ArrayList<String>();
 	// Values for delimiters
 	// Delimiters for different Scenarios on the Cucumber Feature File
-//	private static ArrayList<String> scenarioDelimiters + ;
-//	// Delimiters for specific Scenarios with tables
-//	private static ArrayList<String> outlineDelimiters + ;
-//	// Delimiters for separate table value lines from definition
-//	private static ArrayList<String> tableDelimiters + ;
+	//private static String scenarioDelimiters = "Scenario" ;
+	// Delimiters for separate table value lines from definition
+//	private static ArrayList<String> tableDelimiters = (ArrayList<String>) Arrays.asList("Examples:","Scenarios:");
 //	// Delimiters for separate table values/headers
-//	private static ArrayList<String> valueDelimiters = "|";
+//	private static ArrayList<String> valueDelimiters = (ArrayList<String>) Arrays.asList("|");
 	
 
 	public CucumberTableExpander(String featureFile) {
-		String[] scenarios = featureFile.split("Scenario");
+		String[] scenarios = featureFile.split(SCENARIO_DELIMITERS);
 
 		for (int i = 1; i < scenarios.length; i++) {
 			// Separate Scenario Outlines from regular scenarios
-			if (scenarios[i].trim().startsWith("Outline:")) {
+			if (scenarios[i].trim().startsWith(SCENARIO_OUTLINE_DELIMITER+":")) {
 				// Remove Outline word
-				scenarios[i] = scenarios[i].trim().replace("Outline:", "");
+				scenarios[i] = scenarios[i].trim().replace(SCENARIO_OUTLINE_DELIMITER+":", "");
 				// Separate Scenario definitions from table with containing
 				// values
 				String[] parts = scenarios[i].trim().split(
-						"Examples:|Scenarios:");// OTS
+						SCENARIO_TABLE_SEPARATOR);// OTS
 				// Instantiate outline class to work with definition and list of
 				// values
 				CucumberTableOutline outline = new CucumberTableOutline(parts);
@@ -52,7 +58,7 @@ public class CucumberTableExpander {
 
 			} else {
 				StringBuilder noFeatureScenario = new StringBuilder();
-				noFeatureScenario.append("\nScenario")
+				noFeatureScenario.append("\n"+SCENARIO_DELIMITERS)
 						.append(scenarios[i].trim()).append("\n");
 				this.result.append(noFeatureScenario);
 				this.listOutput.add(noFeatureScenario.toString());
@@ -160,10 +166,10 @@ public class CucumberTableExpander {
 							indexOfHeader++;
 						}
 					}
-					this.outlineOutput.append("\n").append("Scenario: ")
+					this.outlineOutput.append("\n").append(SCENARIO_DELIMITERS+": ")
 							.append(ScenarioGenerated);
 					// NEW ROW WITH DATA on ScenarioGenerated
-					this.severalScenariosResult.add("\nScenario: "
+					this.severalScenariosResult.add("\n"+SCENARIO_DELIMITERS+": "
 							+ ScenarioGenerated);
 				}
 			}
