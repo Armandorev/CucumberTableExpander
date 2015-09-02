@@ -1,7 +1,7 @@
 = Cucumber Table Expander
 Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
 
-A class to transform Cucumber feature with tables in extended cucumber escenarios.
+A class to transform Cucumber feature with tables in extended cucumber escenarios without using external libraries like Gherkin3.
 
 The Cucumber Table Expander consists on one class and also includes a sample use class:
 
