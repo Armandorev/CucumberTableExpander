@@ -3,14 +3,10 @@ Armando Sanchez Medina https://github.com/Armandorev[Armandorev]
 
 A class to transform Cucumber feature with tables in extended cucumber escenarios.
 
-The Cucumber Table Expander consists on four classes:
+The Cucumber Table Expander consists on one class and also includes a sample use class:
 
 `CucumberTableExpander.java`
   Class that can be instantiated receiving a feature as string and returns the result.
-`HeaderElement.java`
-  Promotes select AsciiDoc attributes to Jekyll front matter (e.g., title, author, page-layout)
-`Outline.java`
-  Object to work with Outline Scenarios. REceives the table and definitions and do the real processing.
 `CucumberTableExpanderUseSample.java`
   Demo class to be run. Read an included test.feature file and display the result.
 
