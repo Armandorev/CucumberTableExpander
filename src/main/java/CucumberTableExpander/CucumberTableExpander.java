@@ -6,9 +6,31 @@ import java.util.Iterator;
 
 public class CucumberTableExpander {
 
+// **************************************************************
+// * Cucumber Table Expander. (Armando Sanchez Medina) 			*
+// *  - Input : String containing Cucumber Feature File 		*
+// *  - Output : Cucumber feature with all table scenarios 		*
+// * 			returned as one scenario replacing variables	* 
+// *			with values from the table. Possible returns	*
+// *			as :											*
+// * 			1) Single String with all Scenarios concant.	*
+// *			2) List of Strings.								*
+// **************************************************************
+
+	
 	private String feature;
 	private StringBuilder result = new StringBuilder();
 	private ArrayList<String> listOutput = new ArrayList<String>();
+	// Values for delimiters
+	// Delimiters for different Scenarios on the Cucumber Feature File
+//	private static ArrayList<String> scenarioDelimiters + ;
+//	// Delimiters for specific Scenarios with tables
+//	private static ArrayList<String> outlineDelimiters + ;
+//	// Delimiters for separate table value lines from definition
+//	private static ArrayList<String> tableDelimiters + ;
+//	// Delimiters for separate table values/headers
+//	private static ArrayList<String> valueDelimiters = "|";
+	
 
 	public CucumberTableExpander(String featureFile) {
 		String[] scenarios = featureFile.split("Scenario");
@@ -30,7 +52,7 @@ public class CucumberTableExpander {
 
 			} else {
 				StringBuilder noFeatureScenario = new StringBuilder();
-				noFeatureScenario.append("\nScenario: ")
+				noFeatureScenario.append("\nScenario")
 						.append(scenarios[i].trim()).append("\n");
 				this.result.append(noFeatureScenario);
 				this.listOutput.add(noFeatureScenario.toString());
@@ -128,16 +150,13 @@ public class CucumberTableExpander {
 					String ScenarioGenerated = outlineOutputWork.toString();
 					// Divide Each Value for variable
 					String[] variableValue = scenarioOnTable[j].trim().split(
-							"\\|");// OTS
+							"\\|");
 					for (int k = 0; k < variableValue.length; k++) {
-						if ((!variableValue[k].isEmpty())
-								&& (indexOfHeader < headers.size())) {
-
-							// indexOfHeader<=headers.size()
+						if ((!variableValue[k].isEmpty())&&(indexOfHeader < headers.size())) {
 							ScenarioGenerated = ScenarioGenerated.replace(
-									this.headers.get(indexOfHeader)
-											.getHeaderNameWithSymbols().trim(),
-									variableValue[k].trim());
+							this.headers.get(indexOfHeader)
+									.getHeaderNameWithSymbols().trim(),
+							variableValue[k].trim());
 							indexOfHeader++;
 						}
 					}
